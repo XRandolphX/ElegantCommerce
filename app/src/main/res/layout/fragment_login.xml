@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!-- Fondo de imagen con opacidad ajustable -->
+    <ImageView
+        android:id="@+id/backgroundImage"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        android:src="@drawable/background_blue_suit" />
+
+    <!-- Capa de opacidad -->
+    <View
+        android:id="@+id/opacityLayer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#80000000" />
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="16dp">
+
+            <TextView
+                android:id="@+id/tvAppName"
+                style="@style/h3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="80dp"
+                android:drawablePadding="6dp"
+                android:text="@string/app_name"
+                android:textColor="@android:color/white"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="@id/guidelineLoginLeft"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tvLetsLogin"
+                style="@style/h4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:gravity="center"
+                android:text="Iniciar Sesión"
+                android:textAlignment="center"
+                android:textColor="@android:color/white"
+                android:textSize="35sp"
+                app:layout_constraintStart_toStartOf="@id/guidelineLoginLeft"
+                app:layout_constraintTop_toBottomOf="@id/tvAppName" />
+
+            <TextView
+                android:id="@+id/tvDontHaveAccount"
+                style="@style/h2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:gravity="center"
+                android:text="¿No tienes una cuenta? Regístrate"
+                android:textAlignment="center"
+                android:textColor="@android:color/white"
+                app:layout_constraintStart_toStartOf="@id/guidelineLoginLeft"
+                app:layout_constraintTop_toBottomOf="@id/tvLetsLogin" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tilEmailLogin"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
+                android:hint="Correo"
+                android:textColorHint="@android:color/white"
+                app:layout_constraintEnd_toEndOf="@id/guidelineLoginRight"
+                app:layout_constraintStart_toStartOf="@id/guidelineLoginLeft"
+                app:layout_constraintTop_toBottomOf="@id/tvDontHaveAccount">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edEmailLogin"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textEmailAddress"
+                    android:textColor="@android:color/white" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tilPasswordLogin"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:hint="Contraseña"
+                android:textColorHint="@android:color/white"
+                app:layout_constraintEnd_toEndOf="@id/guidelineLoginRight"
+                app:layout_constraintStart_toStartOf="@id/guidelineLoginLeft"
+                app:layout_constraintTop_toBottomOf="@id/tilEmailLogin"
+                app:passwordToggleEnabled="true">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edPasswordLogin"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textPassword"
+                    android:textColor="@android:color/white" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <TextView
+                android:id="@+id/tvForgotPasswordLogin"
+                style="@style/h2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:gravity="center"
+                android:text="¿Olvidaste tu contraseña?"
+                android:textAlignment="center"
+                android:textColor="@android:color/white"
+                app:layout_constraintEnd_toEndOf="@id/guidelineLoginRight"
+                app:layout_constraintTop_toBottomOf="@id/tilPasswordLogin" />
+
+            <com.github.leandroborgesferreira.loadingbutton.customViews.CircularProgressButton
+                android:id="@+id/buttonLoginLogin"
+                style="@style/blueButtonStyle"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/mediumButtonHeight"
+                android:layout_marginTop="24dp"
+                android:text="Ingresar"
+                app:layout_constraintEnd_toEndOf="@id/guidelineLoginRight"
+                app:layout_constraintStart_toStartOf="@id/guidelineLoginLeft"
+                app:layout_constraintTop_toBottomOf="@id/tvForgotPasswordLogin"
+                app:spinning_bar_color="@android:color/white" />
+
+<!--            <TextView-->
+<!--                android:id="@+id/tvOr"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginTop="16dp"-->
+<!--                android:text="O"-->
+<!--                android:textColor="@android:color/white"-->
+<!--                app:layout_constraintEnd_toEndOf="parent"-->
+<!--                app:layout_constraintStart_toStartOf="parent"-->
+<!--                app:layout_constraintTop_toBottomOf="@id/buttonLoginLogin" />-->
+
+<!--            <com.google.android.material.button.MaterialButton-->
+<!--                android:id="@+id/buttonFacebookLogin"-->
+<!--                style="@style/Widget.MaterialComponents.Button.OutlinedButton"-->
+<!--                android:layout_width="0dp"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginTop="16dp"-->
+<!--                android:text="Facebook"-->
+<!--                android:textColor="@android:color/white"-->
+<!--                app:icon="@drawable/facebook_login"-->
+<!--                app:iconGravity="textStart"-->
+<!--                app:iconTint="@android:color/white"-->
+<!--                app:layout_constraintEnd_toStartOf="@id/buttonGoogleLogin"-->
+<!--                app:layout_constraintStart_toStartOf="@id/guidelineLoginLeft"-->
+<!--                app:layout_constraintTop_toBottomOf="@id/tvOr"-->
+<!--                app:strokeColor="@android:color/white" />-->
+
+<!--            <com.google.android.material.button.MaterialButton-->
+<!--                android:id="@+id/buttonGoogleLogin"-->
+<!--                style="@style/Widget.MaterialComponents.Button.OutlinedButton"-->
+<!--                android:layout_width="0dp"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginStart="8dp"-->
+<!--                android:text="Google"-->
+<!--                android:textColor="@android:color/white"-->
+<!--                app:icon="@drawable/google_login"-->
+<!--                app:iconGravity="textStart"-->
+<!--                app:iconTint="@android:color/white"-->
+<!--                app:layout_constraintBaseline_toBaselineOf="@id/buttonFacebookLogin"-->
+<!--                app:layout_constraintEnd_toEndOf="@id/guidelineLoginRight"-->
+<!--                app:layout_constraintStart_toEndOf="@id/buttonFacebookLogin"-->
+<!--                app:strokeColor="@android:color/white" />-->
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guidelineLoginLeft"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.09" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guidelineLoginRight"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.91" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
+</FrameLayout>

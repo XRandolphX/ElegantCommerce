@@ -1,0 +1,40 @@
+# Built files
+*.apk
+*.ap_
+*.aab
+build/
+/captures
+
+# Gradle
+.gradle/
+local.properties
+
+# Android Studio
+*.iml
+.idea/
+.DS_Store
+
+# Generated files
+bin/
+gen/
+out/
+
+# Sensitive files
+app/google-services.json
+google-services.json
+keystore.properties
+*.keystore
+*.jks
+
+# Logs
+*.log
+
+# Android Studio Navigation editor temp files
+.navigation/
+
+# Version control
+vcs.xml
+
+# NDK
+.externalNativeBuild
+.cxx/

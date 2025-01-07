@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Elegant Commerce</string>
+    <string name="rightAddress">Elegancia y calidad en perfecta armonía</string>
+    <string name="quality">Delicadeza en cada detalle</string>
+    <string name="logout_confirmation_title">Cerrar Sesión</string>
+    <string name="logout_confirmation_message">¿Estás seguro de que deseas cerrar sesión?</string>
+    <string name="yes">Sí</string>
+    <string name="no">No</string>
+</resources>
+

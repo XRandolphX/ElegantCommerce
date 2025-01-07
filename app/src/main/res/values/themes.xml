@@ -1,0 +1,11 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Base.Theme.ElegantCommerce" parent="Theme.Material3.Light.NoActionBar">
+        <!-- Personaliza tu tema aquí -->
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <!-- Asegúrate de que el contenido de la aplicación ocupe el espacio detrás de la barra -->
+        <item name="android:windowTranslucentStatus">true</item>
+    </style>
+
+    <style name="Theme.ElegantCommerce" parent="Base.Theme.ElegantCommerce" />
+</resources>

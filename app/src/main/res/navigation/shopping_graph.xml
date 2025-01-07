@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/shopping_graph"
+    app:startDestination="@id/homeFragment">
+
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.xrandolphx.elegantcommerce.fragment.shopping.HomeFragment"
+        android:label="HomeFragment"
+        tools:layout="@layout/fragment_home">
+        <action
+            android:id="@+id/action_homeFragment_to_productDetailFragment"
+            app:destination="@id/productDetailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/searchFragment"
+        android:name="com.xrandolphx.elegantcommerce.fragment.shopping.SearchFragment"
+        android:label="SearchFragment"
+        tools:layout="@layout/fragment_search">
+        <action
+            android:id="@+id/action_searchFragment_to_productDetailFragment"
+            app:destination="@id/productDetailFragment" />
+        <action
+            android:id="@+id/action_searchFragment_to_chatFragment"
+            app:destination="@id/chatFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim"/>
+    </fragment>
+    <fragment
+        android:id="@+id/cartFragment"
+        android:name="com.xrandolphx.elegantcommerce.fragment.shopping.CartFragment"
+        android:label="CartFragment"
+        tools:layout="@layout/fragment_cart">
+        <action
+            android:id="@+id/action_cartFragment_to_productDetailFragment"
+            app:destination="@id/productDetailFragment" />
+        <action
+            android:id="@+id/action_cartFragment_to_billingFragment"
+            app:destination="@id/billingFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.xrandolphx.elegantcommerce.fragment.shopping.ProfileFragment"
+        android:label="ProfileFragment"
+        tools:layout="@layout/fragment_profile">
+        <action
+            android:id="@+id/action_profileFragment_to_userAccountFragment"
+            app:destination="@id/userAccountFragment" />
+        <action
+            android:id="@+id/action_profileFragment_to_ordersFragment"
+            app:destination="@id/ordersFragment" />
+        <action
+            android:id="@+id/action_profileFragment_to_billingFragment"
+            app:destination="@id/billingFragment" />
+        <action
+            android:id="@+id/action_profileFragment_to_orderDetailFragment"
+            app:destination="@id/orderDetailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/productDetailFragment"
+        android:name="com.xrandolphx.elegantcommerce.fragment.shopping.ProductDetailFragment"
+        android:label="ProductDetailFragment"
+        tools:layout="@layout/fragment_product_details">
+        <argument
+            android:name="product"
+            app:argType="com.xrandolphx.elegantcommerce.data.Product" />
+    </fragment>
+    <fragment
+        android:id="@+id/addressFragment"
+        android:name="com.xrandolphx.elegantcommerce.fragment.shopping.AddressFragment"
+        android:label="AddressFragment"
+        tools:layout="@layout/fragment_address" >
+        <argument
+            android:name="address"
+            app:argType="com.xrandolphx.elegantcommerce.data.Address"
+            app:nullable="true"
+            android:defaultValue="@null" />
+    </fragment>
+    <fragment
+        android:id="@+id/billingFragment"
+        android:name="com.xrandolphx.elegantcommerce.fragment.shopping.BillingFragment"
+        android:label="BillingFragment"
+        tools:layout="@layout/fragment_billing">
+        <action
+            android:id="@+id/action_billingFragment_to_addressFragment"
+            app:destination="@id/addressFragment" />
+        <argument
+            android:name="totalPrice"
+            app:argType="float" />
+        <argument
+            android:name="products"
+            app:argType="com.xrandolphx.elegantcommerce.data.CartProduct[]" />
+        <argument
+            android:name="payment"
+            app:argType="boolean" />
+    </fragment>
+    <fragment
+        android:id="@+id/userAccountFragment"
+        android:name="com.xrandolphx.elegantcommerce.fragment.settings.UserAccountFragment"
+        android:label="UserAccountFragment"
+        tools:layout="@layout/fragment_user_account" />
+    <fragment
+        android:id="@+id/ordersFragment"
+        android:name="com.xrandolphx.elegantcommerce.fragment.settings.AllOrdersFragment"
+        android:label="OrdersFragment"
+        tools:layout="@layout/fragment_orders">
+        <action
+            android:id="@+id/action_ordersFragment_to_orderDetailFragment"
+            app:destination="@id/orderDetailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/orderDetailFragment"
+        android:name="com.xrandolphx.elegantcommerce.fragment.settings.OrderDetailFragment"
+        android:label="OrderDetailFragment"
+        tools:layout="@layout/fragment_order_detail">
+        <argument
+            android:name="order"
+            app:argType="com.xrandolphx.elegantcommerce.data.order.Order" />
+    </fragment>
+    <fragment
+        android:id="@+id/chatFragment"
+        android:name="com.xrandolphx.elegantcommerce.fragment.shopping.ChatFragment"
+        android:label="ChatFragment" />
+</navigation>

@@ -1,0 +1,241 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!-- Fondo de imagen con opacidad ajustable -->
+    <ImageView
+        android:id="@+id/backgroundImage"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        android:src="@drawable/background_blue_suit" />
+
+    <!-- Capa de opacidad -->
+    <View
+        android:id="@+id/opacityLayer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#80000000" />
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="16dp">
+
+            <TextView
+                android:id="@+id/tvAppName"
+                style="@style/h3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="40dp"
+                android:drawablePadding="6dp"
+                android:text="@string/app_name"
+                android:textColor="@android:color/white"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tvLetsRegister"
+                style="@style/h4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:gravity="center"
+                android:text="Registro"
+                android:textAlignment="center"
+                android:textColor="@android:color/white"
+                android:textSize="35sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvAppName" />
+
+            <TextView
+                android:id="@+id/tvDoYouHaveAccount"
+                style="@style/h2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:gravity="center"
+                android:text="¿Tienes una Cuenta? Inicia Sesión"
+                android:textAlignment="center"
+                android:textColor="@android:color/white"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvLetsRegister" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tilFirstNameRegister"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
+                android:hint="Nombres"
+                android:textColorHint="@android:color/white"
+                app:layout_constraintEnd_toEndOf="@id/guidelineRegisterRight"
+                app:layout_constraintStart_toStartOf="@id/guidelineRegisterLeft"
+                app:layout_constraintTop_toBottomOf="@id/tvDoYouHaveAccount">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edFirstNameRegister"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textPersonName"
+                    android:textColor="@android:color/white" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tilLastNameRegister"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:hint="Apellidos"
+                android:textColorHint="@android:color/white"
+                app:layout_constraintEnd_toEndOf="@id/guidelineRegisterRight"
+                app:layout_constraintStart_toStartOf="@id/guidelineRegisterLeft"
+                app:layout_constraintTop_toBottomOf="@id/tilFirstNameRegister">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edLastNameRegister"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textPersonName"
+                    android:textColor="@android:color/white" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tilEmailRegister"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:hint="Correo"
+                android:textColorHint="@android:color/white"
+                app:layout_constraintEnd_toEndOf="@id/guidelineRegisterRight"
+                app:layout_constraintStart_toStartOf="@id/guidelineRegisterLeft"
+                app:layout_constraintTop_toBottomOf="@id/tilLastNameRegister">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edEmailRegister"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textEmailAddress"
+                    android:textColor="@android:color/white" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tilPasswordRegister"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:hint="Contraseña"
+                android:textColorHint="@android:color/white"
+                app:layout_constraintEnd_toEndOf="@id/guidelineRegisterRight"
+                app:layout_constraintStart_toStartOf="@id/guidelineRegisterLeft"
+                app:layout_constraintTop_toBottomOf="@id/tilEmailRegister"
+                app:passwordToggleEnabled="true">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edPasswordRegister"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textPassword"
+                    android:textColor="@android:color/white" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.github.leandroborgesferreira.loadingbutton.customViews.CircularProgressButton
+                android:id="@+id/buttonRegisterRegister"
+                style="@style/blueButtonStyle"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/mediumButtonHeight"
+                android:layout_marginTop="24dp"
+                android:text="Registrar"
+                app:layout_constraintEnd_toEndOf="@id/guidelineRegisterRight"
+                app:layout_constraintStart_toStartOf="@id/guidelineRegisterLeft"
+                app:layout_constraintTop_toBottomOf="@id/tilPasswordRegister"
+                app:spinning_bar_color="@android:color/white" />
+
+            <!--            <TextView-->
+            <!--                android:id="@+id/tvOr"-->
+            <!--                android:layout_width="wrap_content"-->
+            <!--                android:layout_height="wrap_content"-->
+            <!--                android:layout_marginTop="16dp"-->
+            <!--                android:text="O"-->
+            <!--                android:textColor="@android:color/white"-->
+            <!--                app:layout_constraintEnd_toEndOf="parent"-->
+            <!--                app:layout_constraintStart_toStartOf="parent"-->
+            <!--                app:layout_constraintTop_toBottomOf="@id/buttonRegisterRegister" />-->
+
+            <!--            <com.google.android.material.button.MaterialButton-->
+            <!--                android:id="@+id/buttonFacebookRegister"-->
+            <!--                style="@style/Widget.MaterialComponents.Button.OutlinedButton"-->
+            <!--                android:layout_width="0dp"-->
+            <!--                android:layout_height="wrap_content"-->
+            <!--                android:layout_marginTop="16dp"-->
+            <!--                android:text="Facebook"-->
+            <!--                android:textColor="@android:color/white"-->
+            <!--                app:icon="@drawable/facebook_login"-->
+            <!--                app:iconGravity="textStart"-->
+            <!--                app:iconTint="@android:color/white"-->
+            <!--                app:layout_constraintEnd_toStartOf="@id/buttonGoogleRegister"-->
+            <!--                app:layout_constraintStart_toStartOf="@id/guidelineRegisterLeft"-->
+            <!--                app:layout_constraintTop_toBottomOf="@id/tvOr"-->
+            <!--                app:strokeColor="@android:color/white" />-->
+
+            <!--            <com.google.android.material.button.MaterialButton-->
+            <!--                android:id="@+id/buttonGoogleRegister"-->
+            <!--                style="@style/Widget.MaterialComponents.Button.OutlinedButton"-->
+            <!--                android:layout_width="0dp"-->
+            <!--                android:layout_height="wrap_content"-->
+            <!--                android:layout_marginStart="8dp"-->
+            <!--                android:text="Google"-->
+            <!--                android:textColor="@android:color/white"-->
+            <!--                app:icon="@drawable/google_login"-->
+            <!--                app:iconGravity="textStart"-->
+            <!--                app:iconTint="@android:color/white"-->
+            <!--                app:layout_constraintBaseline_toBaselineOf="@id/buttonFacebookRegister"-->
+            <!--                app:layout_constraintEnd_toEndOf="@id/guidelineRegisterRight"-->
+            <!--                app:layout_constraintStart_toEndOf="@id/buttonFacebookRegister"-->
+            <!--                app:strokeColor="@android:color/white" />-->
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guidelineRegisterLeft"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.09" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guidelineRegisterRight"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.91" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
+
+    <!-- TextView para mostrar los requisitos de la contraseña -->
+<!--    <TextView-->
+<!--        android:id="@+id/tvPasswordRequirements"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_gravity="center"-->
+<!--        android:layout_marginTop="16dp"-->
+<!--        android:background="#80000000"-->
+<!--        android:padding="16dp"-->
+<!--        android:text="La contraseña debe cumplir los siguientes requisitos:"-->
+<!--        android:textAppearance="@style/TextAppearance.AppCompat.Small"-->
+<!--        android:textColor="@android:color/white"-->
+<!--        android:visibility="gone" />-->
+
+</FrameLayout>
