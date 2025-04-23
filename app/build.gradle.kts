@@ -148,16 +148,13 @@ dependencies {
 
     // lifecycle-viewmodel-compose
     implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.7.0")
+
     // Coil
     implementation("io.coil-kt:coil-compose:2.5.0")
+
     // Activity Compose
     implementation("androidx.activity:activity-compose:1.4.0")
 
-    //Paypal Dependencies
-    implementation("com.github.amitshekhariitbhu.Fast-Android-Networking:android-networking:1.0.4")
-    implementation("com.squareup.okhttp3:okhttp:4.12.0")
-    implementation ("com.google.code.gson:gson:2.12.1")
-    implementation ("com.paypal.android:paypal-web-payments:1.7.1")
 }
 
 // Allow references to generated code
