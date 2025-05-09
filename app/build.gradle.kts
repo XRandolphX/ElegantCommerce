@@ -155,6 +155,8 @@ dependencies {
     // Activity Compose
     implementation("androidx.activity:activity-compose:1.4.0")
 
+    // Custom Tabs
+    implementation ("androidx.browser:browser:1.4.0")
 }
 
 // Allow references to generated code

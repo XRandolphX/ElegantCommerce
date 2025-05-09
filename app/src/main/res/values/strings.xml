@@ -6,5 +6,6 @@
     <string name="logout_confirmation_message">¿Estás seguro de que deseas cerrar sesión?</string>
     <string name="yes">Sí</string>
     <string name="no">No</string>
+    <string name="deeplink">Deep Link ElegantCommerce</string>
 </resources>
 

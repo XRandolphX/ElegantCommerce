@@ -10,7 +10,6 @@
 
     <application
         android:name=".ElegantCommerce"
-        android:usesCleartextTraffic="true"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
@@ -19,6 +18,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.ElegantCommerce"
+        android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <!-- Activity de inicio -->
         <activity
@@ -27,14 +27,49 @@
             android:theme="@style/Theme.ElegantCommerce">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <!-- Otras actividades -->
+        <!-- Shopping Activity -->
         <activity
             android:name=".activity.ShoppingActivity"
             android:exported="false" />
+        <!-- Payment Successful (Deep Link) -->
+        <activity
+            android:name=".activity.CongratsActivity"
+            android:exported="true"
+            android:label="@string/deeplink">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <action android:name="android.intent.category.DEFAULT" />
+                <action android:name="android.intent.category.BROWSABLE" />
+                <data android:scheme="elegantcommerce" android:host="congrats" />
+            </intent-filter>
+        </activity>
+        <!-- Payment Failed (Deep Link) -->
+        <activity
+            android:name=".activity.FailureActivity"
+            android:exported="true"
+            android:label="@string/deeplink">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <action android:name="android.intent.category.DEFAULT" />
+                <action android:name="android.intent.category.BROWSABLE" />
+                <data android:scheme="elegantcommerce" android:host="failure" />
+            </intent-filter>
+        </activity>
+        <!-- Payment Pending (Deep Link) -->
+        <activity
+            android:name=".activity.PendingActivity"
+            android:exported="true"
+            android:label="@string/deeplink">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <action android:name="android.intent.category.DEFAULT" />
+                <action android:name="android.intent.category.BROWSABLE" />
+                <data android:scheme="elegantcommerce" android:host="pending" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>
