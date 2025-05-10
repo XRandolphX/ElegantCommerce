@@ -1,5 +1,7 @@
 package com.xrandolphx.elegantcommerce.data
 
-data class PaymentResponse (
-    val initPoint: String
+import com.google.gson.annotations.SerializedName
+
+data class PaymentResponse(
+    @SerializedName("init_point") val initPoint: String?
 )

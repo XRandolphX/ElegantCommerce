@@ -1,11 +1,14 @@
 package com.xrandolphx.elegantcommerce.fragment.shopping
 
 import android.app.AlertDialog
+import android.net.Uri
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.browser.customtabs.CustomTabsIntent
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
@@ -29,6 +32,7 @@ import com.xrandolphx.elegantcommerce.util.HorizontalItemDecoration
 import com.xrandolphx.elegantcommerce.viewmodel.BillingViewModel
 import com.xrandolphx.elegantcommerce.viewmodel.OrderViewModel
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
@@ -173,23 +177,26 @@ class BillingFragment : Fragment() {
     private fun showOrderConfirmationDialog() {
         val alertDialog = AlertDialog.Builder(requireContext()).apply {
             setTitle("Ordenar Productos")
-            setMessage("¿Desea pedir los artículos de su cesta?")
+            setMessage("¿Desea pedir los artículos de su cesta y proceder al pago?")
             setNegativeButton("Cancelar") { dialog, _ ->
                 dialog.dismiss()
             }
             setPositiveButton("Sí") { dialog, _ ->
-                val order = Order(
-                    OrderStatus.Ordered.status,
-                    totalPrice,
-                    products,
-                    selectedAddress!!
-                )
-                orderViewModel.placeOrder(order)
                 dialog.dismiss()
+                inititatePayment()
+//                val order = Order(
+//                    OrderStatus.Ordered.status,
+//                    totalPrice,
+//                    products,
+//                    selectedAddress!!
+//                )
+//                orderViewModel.placeOrder(order)
+//                dialog.dismiss()
             }
         }
-        alertDialog.create()
-        alertDialog.show()
+//        alertDialog.create()
+//        alertDialog.show()
+        alertDialog.create().show()
     }
 
     private fun setupAddressRv() {
@@ -205,6 +212,45 @@ class BillingFragment : Fragment() {
             layoutManager = LinearLayoutManager(requireContext(), RecyclerView.HORIZONTAL, false)
             adapter = billingProductsAdapter
             addItemDecoration(HorizontalItemDecoration())
+        }
+    }
+
+    private fun inititatePayment() {
+        Log.d("BillingFragment", "Llamando a createPaymentPreference...")
+        // Llamamos al método para crear la preferencia de pago
+        billingViewModel.createPaymentPreference(products, totalPrice, selectedAddress!!)
+        // Observamos el StateFlow para reaccionar a los diferentes estados
+        viewLifecycleOwner.lifecycleScope.launch {
+            billingViewModel.paymentPreference.collect { result ->
+                when (result) {
+                    is Resource.Loading -> {
+                        Log.d("BillingFragment", "Estado Loading")
+                        binding.progressbarAddress.visibility = View.VISIBLE
+                    }
+
+                    is Resource.Success -> {
+                        Log.d("BillingFragment", "Estado Success - Datos recibidos: ${result.data}")
+                        val initPoint = result.data?.initPoint ?: run {
+                            Log.e("BillingFragment", "initPoint es nulo")
+                            return@collect
+                        }
+                        // Lanza la Custom Tab con el init_point recibido
+                        val customTabsIntent = CustomTabsIntent.Builder().build()
+                        customTabsIntent.launchUrl(requireContext(), Uri.parse(initPoint))
+                    }
+
+                    is Resource.Error -> {
+                        Log.e("BillingFragment", "Estado Error: ${result.message}")
+                        Toast.makeText(
+                            requireContext(),
+                            "Error: ${result.message}",
+                            Toast.LENGTH_SHORT
+                        ).show()
+                    }
+
+                    else -> Unit
+                }
+            }
         }
     }
 }
