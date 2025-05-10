@@ -1,4 +1,7 @@
 package com.xrandolphx.elegantcommerce.data
 
-class PaymentRequest {
-}
+data class PaymentRequest (
+    val products: List<CartProduct>,
+    val totalPrice: Float,
+    val address: Address
+)

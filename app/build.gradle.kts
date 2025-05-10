@@ -157,6 +157,12 @@ dependencies {
 
     // Custom Tabs
     implementation ("androidx.browser:browser:1.4.0")
+
+    // Retrofit Core
+    implementation("com.squareup.retrofit2:retrofit:2.9.0")
+
+    // JSON Converter, Gson
+    implementation("com.squareup.retrofit2:converter-gson:2.9.0")
 }
 
 // Allow references to generated code

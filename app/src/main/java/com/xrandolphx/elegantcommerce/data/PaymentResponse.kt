@@ -1,4 +1,5 @@
 package com.xrandolphx.elegantcommerce.data
 
-class PaymentResponse {
-}
+data class PaymentResponse (
+    val initPoint: String
+)

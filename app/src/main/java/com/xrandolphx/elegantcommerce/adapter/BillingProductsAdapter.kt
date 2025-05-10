@@ -12,7 +12,8 @@ import com.xrandolphx.elegantcommerce.data.CartProduct
 import com.xrandolphx.elegantcommerce.databinding.BillingProductsRvItemBinding
 import com.xrandolphx.elegantcommerce.helper.getProductPrice
 
-class BillingProductsAdapter : RecyclerView.Adapter<BillingProductsAdapter.BillingProductsViewHolder>() {
+class BillingProductsAdapter :
+    RecyclerView.Adapter<BillingProductsAdapter.BillingProductsViewHolder>() {
 
     inner class BillingProductsViewHolder(val binding: BillingProductsRvItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
@@ -69,6 +70,4 @@ class BillingProductsAdapter : RecyclerView.Adapter<BillingProductsAdapter.Billi
     override fun getItemCount(): Int {
         return differ.currentList.size
     }
-
-
 }
