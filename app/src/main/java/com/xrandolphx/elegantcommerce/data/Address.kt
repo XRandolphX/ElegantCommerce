@@ -9,6 +9,10 @@ data class Address(
     val location: String,
     val addressBill: String,
     val phone: String,
+    // Adicionales
+    val city: String = "",
+    val state: String = "",
+    val zipCode: String = "",
 ) : Parcelable {
-    constructor() : this("", "", "", "")
+    constructor() : this("", "", "", "", "", "", "" )
 }

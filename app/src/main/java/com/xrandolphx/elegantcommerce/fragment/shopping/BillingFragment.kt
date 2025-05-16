@@ -254,3 +254,4 @@ class BillingFragment : Fragment() {
         }
     }
 }
+
