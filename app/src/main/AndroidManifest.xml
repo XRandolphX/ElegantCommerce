@@ -36,14 +36,14 @@
             android:exported="false" />
         <!-- Payment Successful (Deep Link) -->
         <activity
-            android:name=".activity.CongratsActivity"
+            android:name=".activity.PaymentResultActivity"
             android:exported="true"
             android:label="@string/deeplink">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
                 <action android:name="android.intent.category.DEFAULT" />
                 <action android:name="android.intent.category.BROWSABLE" />
-                <data android:scheme="elegantcommerce" android:host="congrats" />
+                <data android:scheme="elegantcommerce" android:host="payment" />
             </intent-filter>
         </activity>
         <!-- Payment Failed (Deep Link) -->

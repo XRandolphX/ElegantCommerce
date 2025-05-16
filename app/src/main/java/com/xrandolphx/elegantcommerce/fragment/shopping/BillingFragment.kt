@@ -29,6 +29,7 @@ import com.xrandolphx.elegantcommerce.data.order.Order
 import com.xrandolphx.elegantcommerce.data.order.OrderStatus
 import com.xrandolphx.elegantcommerce.databinding.FragmentBillingBinding
 import com.xrandolphx.elegantcommerce.util.HorizontalItemDecoration
+import com.xrandolphx.elegantcommerce.util.PaymentResultCache
 import com.xrandolphx.elegantcommerce.viewmodel.BillingViewModel
 import com.xrandolphx.elegantcommerce.viewmodel.OrderViewModel
 import dagger.hilt.android.AndroidEntryPoint
@@ -184,18 +185,9 @@ class BillingFragment : Fragment() {
             setPositiveButton("Sí") { dialog, _ ->
                 dialog.dismiss()
                 inititatePayment()
-//                val order = Order(
-//                    OrderStatus.Ordered.status,
-//                    totalPrice,
-//                    products,
-//                    selectedAddress!!
-//                )
-//                orderViewModel.placeOrder(order)
-//                dialog.dismiss()
             }
         }
-//        alertDialog.create()
-//        alertDialog.show()
+
         alertDialog.create().show()
     }
 
@@ -217,35 +209,66 @@ class BillingFragment : Fragment() {
 
     private fun inititatePayment() {
         Log.d("BillingFragment", "Llamando a createPaymentPreference...")
-        // Llamamos al método para crear la preferencia de pago
+
+        // Guardamos los datos del pedido en la caché para recuperarlos después del pago
+        PaymentResultCache.saveOrderData(products, totalPrice, selectedAddress!!)
+
+        // Mostramos un indicador de carga
+        binding.buttonPlaceOrder.startAnimation()
+
+        // Llamamos al metodo para crear la preferencia de pago
         billingViewModel.createPaymentPreference(products, totalPrice, selectedAddress!!)
+
         // Observamos el StateFlow para reaccionar a los diferentes estados
         viewLifecycleOwner.lifecycleScope.launch {
             billingViewModel.paymentPreference.collect { result ->
                 when (result) {
                     is Resource.Loading -> {
-                        Log.d("BillingFragment", "Estado Loading")
-                        binding.progressbarAddress.visibility = View.VISIBLE
+                        Log.d("BillingFragment", "Creando preferencia de pago ...")
+                        binding.buttonPlaceOrder.revertAnimation()
                     }
 
                     is Resource.Success -> {
-                        Log.d("BillingFragment", "Estado Success - Datos recibidos: ${result.data}")
-                        val initPoint = result.data?.initPoint ?: run {
-                            Log.e("BillingFragment", "initPoint es nulo")
+                        Log.d("BillingFragment", "Preferencia creada: ${result.data}")
+                        binding.buttonPlaceOrder.revertAnimation()
+
+                        val initPoint = result.data?.initPoint
+                        if (initPoint.isNullOrEmpty()) {
+                            Log.e("BillingFragment", "Error: initPoint es nulo o vacío")
+                            Toast.makeText(
+                                requireContext(),
+                                "Error al obtener el punto de pago",
+                                Toast.LENGTH_SHORT
+                            ).show()
                             return@collect
                         }
                         // Lanza la Custom Tab con el init_point recibido
-                        val customTabsIntent = CustomTabsIntent.Builder().build()
-                        customTabsIntent.launchUrl(requireContext(), Uri.parse(initPoint))
+                        try {
+                            val customTabsIntent = CustomTabsIntent.Builder()
+                                .setShowTitle(true)
+                                .build()
+                            customTabsIntent.launchUrl(requireContext(), Uri.parse(initPoint))
+                        } catch (e: Exception) {
+                            Log.e("BillingFragment", "Error al abrir el URL", e)
+                            Toast.makeText(
+                                requireContext(),
+                                "Error al abrir la página de pago: ${e.message}",
+                                Toast.LENGTH_SHORT
+                            ).show()
+                        }
                     }
 
                     is Resource.Error -> {
-                        Log.e("BillingFragment", "Estado Error: ${result.message}")
-                        Toast.makeText(
-                            requireContext(),
-                            "Error: ${result.message}",
-                            Toast.LENGTH_SHORT
-                        ).show()
+                        binding.buttonPlaceOrder.revertAnimation()
+                        Log.e("BillingFragment", "Error: ${result.message}")
+                        AlertDialog.Builder(requireContext())
+                            .setTitle("Error")
+                            .setMessage("Ocurrió un error al procesar el pago: ${result.message}")
+                            .setPositiveButton("Cerrar") { dialog, _ ->
+                                dialog.dismiss()
+                            }
+                            .setCancelable(false)
+                            .show()
                     }
 
                     else -> Unit

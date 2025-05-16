@@ -9,7 +9,7 @@ data class Address(
     val location: String,
     val addressBill: String,
     val phone: String,
-    // Adicionales
+    // Adicionales para Mercado Pago
     val city: String = "",
     val state: String = "",
     val zipCode: String = "",
