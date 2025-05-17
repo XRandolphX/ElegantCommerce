@@ -12,7 +12,8 @@ import javax.inject.Singleton
 @Module
 @InstallIn(SingletonComponent::class)
 object NetworkModule {
-    private const val BASE_URL = "http://10.0.2.2:3000/api/payments/"
+    //    private const val BASE_URL = "http://10.0.2.2:3000/api/payments/"
+    private const val BASE_URL = "https://mercadopago-nodejs-production.up.railway.app/api/payments"
 
     @Singleton
     @Provides
