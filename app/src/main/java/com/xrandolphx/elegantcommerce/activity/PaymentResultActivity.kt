@@ -12,6 +12,7 @@ import com.xrandolphx.elegantcommerce.data.order.OrderStatus
 import com.xrandolphx.elegantcommerce.databinding.ActivityPaymentResultBinding
 import com.xrandolphx.elegantcommerce.util.PaymentResultCache
 import com.xrandolphx.elegantcommerce.viewmodel.OrderViewModel
+import com.xrandolphx.elegantcommerce.viewmodel.CartViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -20,6 +21,8 @@ class PaymentResultActivity : AppCompatActivity() {
     private lateinit var binding: ActivityPaymentResultBinding
     private val orderViewModel by viewModels<OrderViewModel>()
     private val TAG = "PaymentResultActivity"
+    private val cartViewModel by viewModels<CartViewModel>()
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,7 +33,7 @@ class PaymentResultActivity : AppCompatActivity() {
 
         val data: Uri? = intent?.data
         if (data != null) {
-            when (data.lastPathSegment) {
+            when (data?.lastPathSegment) {
                 "success" -> {
                     handlePaymentSuccess()
                 }
@@ -101,6 +104,9 @@ class PaymentResultActivity : AppCompatActivity() {
 
             // Guardar la orden en la base de datos
             orderViewModel.placeOrder(order)
+
+            // Vaciar el carrito al confirmar el pedido
+            cartViewModel.clearCart()
 
             // Limpiar el cache después de usarlo
             PaymentResultCache.clearLastOrderData()

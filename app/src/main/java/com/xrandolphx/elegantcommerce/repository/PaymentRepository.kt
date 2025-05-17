@@ -13,7 +13,8 @@ class PaymentRepository @Inject constructor(private val paymentService: PaymentS
     fun createPaymentPreference(
         products: List<com.xrandolphx.elegantcommerce.data.CartProduct>,
         totalPrice: Float,
-        address: com.xrandolphx.elegantcommerce.data.Address
+        address: com.xrandolphx.elegantcommerce.data.Address,
+        userEmail: String
     ): Flow<Resource<PaymentResponse>> = flow {
         Log.d("PaymentRepository", "Iniciando creación de preferencia de pago ...")
         emit(Resource.Loading())
@@ -21,7 +22,8 @@ class PaymentRepository @Inject constructor(private val paymentService: PaymentS
             val request = PaymentRequest(
                 products = products,
                 totalPrice = totalPrice,
-                address = address
+                address = address,
+                userEmail = userEmail
             )
             Log.d("PaymentRepository", "Enviando request: $request")
             val response = paymentService.createPayment(request)

@@ -125,4 +125,11 @@ class CartViewModel @Inject constructor(
         }
     }
 
+    fun clearCart() {
+        cartProductDocuments.forEach { document ->
+            firestore.collection("user").document(auth.uid!!).collection("cart")
+                .document(document.id).delete()
+        }
+    }
+
 }

@@ -50,10 +50,11 @@ class BillingViewModel @Inject constructor(
     fun createPaymentPreference(
         products: List<CartProduct>,
         totalprice: Float,
-        address: Address
+        address: Address,
+        userEmail: String
     ) {
         viewModelScope.launch {
-            paymentRepository.createPaymentPreference(products, totalprice, address)
+            paymentRepository.createPaymentPreference(products, totalprice, address, userEmail)
                 .collect { resource ->
                     _paymentPreference.value = resource
                 }

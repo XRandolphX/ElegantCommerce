@@ -21,6 +21,7 @@ import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.snackbar.Snackbar
+import com.google.firebase.auth.FirebaseAuth
 import com.xrandolphx.elegant_commerce.util.Resource
 import com.xrandolphx.elegantcommerce.R
 import com.xrandolphx.elegantcommerce.activity.PaymentResultActivity
@@ -53,11 +54,19 @@ class BillingFragment : Fragment() {
     private var selectedAddress: Address? = null
     private val orderViewModel by viewModels<OrderViewModel>()
 
+    val currentUser = FirebaseAuth.getInstance().currentUser
+    val userEmail = currentUser?.email ?: "cliente@elegantcommerce.com"
+
+
     private val customTabsLauncher = registerForActivityResult(
         ActivityResultContracts.StartActivityForResult()
     ) {
         // Al regresar del navegador, abre el PaymentResultActivity
-        val intent = Intent(requireContext(), PaymentResultActivity::class.java)
+//        val intent = Intent(requireContext(), PaymentResultActivity::class.java)
+//        startActivity(intent)
+        val intent = Intent(requireContext(), PaymentResultActivity::class.java).apply {
+            data = Uri.parse("elegantcommerce://payment/success")// 👈 Forzar el deeplink
+        }
         startActivity(intent)
     }
 
@@ -229,7 +238,7 @@ class BillingFragment : Fragment() {
         binding.buttonPlaceOrder.startAnimation()
 
         // Llamamos al metodo para crear la preferencia de pago
-        billingViewModel.createPaymentPreference(products, totalPrice, selectedAddress!!)
+        billingViewModel.createPaymentPreference(products, totalPrice, selectedAddress!!, userEmail)
 
         // Observamos el StateFlow para reaccionar a los diferentes estados
         viewLifecycleOwner.lifecycleScope.launch {

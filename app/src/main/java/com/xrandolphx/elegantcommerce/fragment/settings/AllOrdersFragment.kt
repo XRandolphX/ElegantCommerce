@@ -56,8 +56,13 @@ class AllOrdersFragment : Fragment() {
 
                         is Resource.Success -> {
                             binding.progressbarAllOrders.visibility = View.GONE
-                            ordersAdapter.differ.submitList(it.data)
-                            if (it.data.isNullOrEmpty()) {
+
+                            // Ordenar por fecha descendente (más reciente primero)
+                            val sortedOrders = it.data?.sortedByDescending { order -> order.date }
+
+                            ordersAdapter.differ.submitList(sortedOrders)
+
+                            if (sortedOrders.isNullOrEmpty()) {
                                 binding.tvEmptyOrders.visibility = View.VISIBLE
                             }
                         }
