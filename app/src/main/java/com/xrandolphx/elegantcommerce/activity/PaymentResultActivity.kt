@@ -23,11 +23,35 @@ class PaymentResultActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_payment_result)
+
         binding = ActivityPaymentResultBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        // Procesar el intent para manejar el deeplink
-        handleIntent(intent)
+        val data: Uri? = intent?.data
+        if (data != null) {
+            when (data.lastPathSegment) {
+                "success" -> {
+                    handlePaymentSuccess()
+                }
+
+                "failure" -> {
+                    handlePaymentFailure()
+                }
+
+                "pending" -> {
+                    handlePaymentPending()
+                }
+
+                else -> showUnknownResult()
+            }
+        } else {
+            showUnknownResult()
+        }
+
+        binding.buttonContinueShopping.setOnClickListener {
+            navigateToHomeScreen()
+        }
     }
 
     override fun onNewIntent(intent: Intent) {
@@ -92,7 +116,8 @@ class PaymentResultActivity : AppCompatActivity() {
     private fun handlePaymentFailure() {
         binding.imagePaymentResult.setImageResource(R.drawable.ic_error_circle)
         binding.tvPaymentResultTitle.text = "Pago fallido"
-        binding.tvPaymentResultDescription.text = "Hubo un problema procesando tu pago. Por favor intenta nuevamente."
+        binding.tvPaymentResultDescription.text =
+            "Hubo un problema procesando tu pago. Por favor intenta nuevamente."
 
         binding.buttonContinueShopping.text = "Intentar nuevamente"
         binding.buttonContinueShopping.setOnClickListener {
@@ -103,7 +128,8 @@ class PaymentResultActivity : AppCompatActivity() {
     private fun handlePaymentPending() {
         binding.imagePaymentResult.setImageResource(R.drawable.ic_info_circle)
         binding.tvPaymentResultTitle.text = "Pago pendiente"
-        binding.tvPaymentResultDescription.text = "Tu pago está siendo procesado. Te notificaremos cuando se complete."
+        binding.tvPaymentResultDescription.text =
+            "Tu pago está siendo procesado. Te notificaremos cuando se complete."
 
         binding.buttonContinueShopping.setOnClickListener {
             navigateToHomeScreen()
@@ -117,4 +143,13 @@ class PaymentResultActivity : AppCompatActivity() {
         startActivity(intent)
         finish()
     }
+
+    private fun showUnknownResult() {
+        binding.imagePaymentResult.setImageResource(R.drawable.ic_info_circle)
+        binding.tvPaymentResultTitle.text = "Estado desconocido"
+        binding.tvPaymentResultDescription.text =
+            "No pudimos verificar si tu pago fue exitoso o no. Por favor revisa tu estado de pago o contacta soporte."
+        binding.buttonContinueShopping.text = "Volver al inicio"
+    }
+
 }

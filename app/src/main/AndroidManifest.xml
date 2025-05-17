@@ -48,33 +48,12 @@
                     android:host="payment"
                     android:path="/success"
                     android:scheme="elegantcommerce" />
-            </intent-filter>
-        </activity>
-        <!-- Payment Failed (Deep Link) -->
-        <activity
-            android:name=".activity.FailureActivity"
-            android:exported="true"
-            android:label="@string/deeplink">
-            <intent-filter>
-                <action android:name="android.intent.action.VIEW" />
-                <action android:name="android.intent.category.DEFAULT" />
-                <action android:name="android.intent.category.BROWSABLE" />
 
                 <data
                     android:host="payment"
                     android:path="/failure"
                     android:scheme="elegantcommerce" />
-            </intent-filter>
-        </activity>
-        <!-- Payment Pending (Deep Link) -->
-        <activity
-            android:name=".activity.PendingActivity"
-            android:exported="true"
-            android:label="@string/deeplink">
-            <intent-filter>
-                <action android:name="android.intent.action.VIEW" />
-                <action android:name="android.intent.category.DEFAULT" />
-                <action android:name="android.intent.category.BROWSABLE" />
+
 
                 <data
                     android:host="payment"

@@ -1,6 +1,7 @@
 package com.xrandolphx.elegantcommerce.fragment.shopping
 
 import android.app.AlertDialog
+import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.util.Log
@@ -8,6 +9,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.browser.customtabs.CustomTabsIntent
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -21,6 +23,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.snackbar.Snackbar
 import com.xrandolphx.elegant_commerce.util.Resource
 import com.xrandolphx.elegantcommerce.R
+import com.xrandolphx.elegantcommerce.activity.PaymentResultActivity
 import com.xrandolphx.elegantcommerce.adapter.AddressAdapter
 import com.xrandolphx.elegantcommerce.adapter.BillingProductsAdapter
 import com.xrandolphx.elegantcommerce.data.Address
@@ -49,6 +52,15 @@ class BillingFragment : Fragment() {
 
     private var selectedAddress: Address? = null
     private val orderViewModel by viewModels<OrderViewModel>()
+
+    private val customTabsLauncher = registerForActivityResult(
+        ActivityResultContracts.StartActivityForResult()
+    ) {
+        // Al regresar del navegador, abre el PaymentResultActivity
+        val intent = Intent(requireContext(), PaymentResultActivity::class.java)
+        startActivity(intent)
+    }
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -247,9 +259,14 @@ class BillingFragment : Fragment() {
                             val customTabsIntent = CustomTabsIntent.Builder()
                                 .setShowTitle(true)
                                 .build()
-                            customTabsIntent.launchUrl(requireContext(), Uri.parse(initPoint))
+                            val intent = customTabsIntent.intent
+                            intent.data = Uri.parse(initPoint)
+                            binding.progressBarCustomTab.visibility = View.VISIBLE
+                            // Lanzar el navegador usando el launcher que espera el regreso
+                            customTabsLauncher.launch(intent)
                         } catch (e: Exception) {
                             Log.e("BillingFragment", "Error al abrir el URL", e)
+                            binding.progressBarCustomTab.visibility = View.GONE
                             Toast.makeText(
                                 requireContext(),
                                 "Error al abrir la página de pago: ${e.message}",
