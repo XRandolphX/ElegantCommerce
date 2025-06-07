@@ -32,7 +32,7 @@
         </activity>
         <!-- Shopping Activity -->
         <activity
-            android:name=".activity.ShoppingActivity"
+            android:name=".activity.MainActivity"
             android:exported="false" />
         <!-- Payment Successful (Deep Link) -->
         <activity

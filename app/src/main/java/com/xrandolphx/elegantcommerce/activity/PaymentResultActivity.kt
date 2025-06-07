@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.util.Log
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import com.google.firebase.analytics.FirebaseAnalytics
 import com.xrandolphx.elegantcommerce.R
 import com.xrandolphx.elegantcommerce.data.order.Order
 import com.xrandolphx.elegantcommerce.data.order.OrderStatus
@@ -26,7 +27,6 @@ class PaymentResultActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_payment_result)
 
         binding = ActivityPaymentResultBinding.inflate(layoutInflater)
         setContentView(binding.root)
@@ -91,6 +91,7 @@ class PaymentResultActivity : AppCompatActivity() {
         binding.imagePaymentResult.setImageResource(R.drawable.ic_check_circle)
         binding.tvPaymentResultTitle.text = "¡Pago exitoso!"
         binding.tvPaymentResultDescription.text = "Tu pedido ha sido procesado correctamente."
+        val analytics = FirebaseAnalytics.getInstance(this)
 
         // Recuperar los datos del cache para crear la orden
         val orderData = PaymentResultCache.getLastOrderData()
@@ -110,6 +111,13 @@ class PaymentResultActivity : AppCompatActivity() {
 
             // Limpiar el cache después de usarlo
             PaymentResultCache.clearLastOrderData()
+
+            val bundle = Bundle().apply {
+                putString("payment_result", "success")
+                putDouble("total_price", orderData.totalPrice.toDouble())
+                putInt("product_count", orderData.products.size)
+            }
+            analytics.logEvent("payment_result_received", bundle)
         } else {
             Log.e(TAG, "No se encontraron datos de la orden en caché")
         }
@@ -144,7 +152,7 @@ class PaymentResultActivity : AppCompatActivity() {
 
     private fun navigateToHomeScreen() {
         // Ir a la pantalla principal y limpiar el stack de activities
-        val intent = Intent(this, ShoppingActivity::class.java)
+        val intent = Intent(this, MainActivity::class.java)
         intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
         startActivity(intent)
         finish()

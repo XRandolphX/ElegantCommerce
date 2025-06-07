@@ -55,7 +55,9 @@ class AddressAdapter : Adapter<AddressAdapter.AddressViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AddressViewHolder {
         return AddressViewHolder(
             AddressRvItemBinding.inflate(
-                LayoutInflater.from(parent.context)
+                LayoutInflater.from(parent.context),
+                parent,
+                false
             )
         )
     }
@@ -76,8 +78,9 @@ class AddressAdapter : Adapter<AddressAdapter.AddressViewHolder>() {
 
     init {
         differ.addListListener { _, _ ->
-            notifyItemChanged(selectedAddress)
-
+            if (selectedAddress >= 0) {
+                notifyItemChanged(selectedAddress)
+            }
         }
     }
 

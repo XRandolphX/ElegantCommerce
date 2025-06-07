@@ -20,49 +20,37 @@ class AllOrdersAdapter : RecyclerView.Adapter<AllOrdersAdapter.OrdersViewHolder>
             binding.apply {
                 tvOrderId.text = order.orderId.toString()
                 tvOrderDate.text = order.date
+
+                val orderStatus = getOrderStatus(order.orderStatus)
                 val resources = itemView.resources
 
-                val colorDrawable = when (getOrderStatus(order.orderStatus)) {
-                    is OrderStatus.Ordered -> {
-                        ColorDrawable(
-                            resources.getColor(
-                                R.color.g_orange_yellow,
-                                itemView.context.theme
-                            )
-                        )
-                    }
 
-                    is OrderStatus.Confirmed -> {
-                        ColorDrawable(resources.getColor(R.color.c_blue, itemView.context.theme))
-                    }
-
-                    is OrderStatus.Delivered -> {
-                        ColorDrawable(resources.getColor(R.color.g_green, itemView.context.theme))
-                    }
-
-                    is OrderStatus.Shipped -> {
-                        ColorDrawable(resources.getColor(R.color.c_orange, itemView.context.theme))
-                    }
-
-                    is OrderStatus.Canceled -> {
-                        ColorDrawable(resources.getColor(R.color.g_red, itemView.context.theme))
-                    }
-
-                    is OrderStatus.Returned -> {
-                        ColorDrawable(resources.getColor(R.color.c_yellow, itemView.context.theme))
-                    }
+                val colorDrawable = when (orderStatus) {
+                    is OrderStatus.Ordered -> ColorDrawable(resources.getColor(R.color.g_orange_yellow, itemView.context.theme))
+                    is OrderStatus.Confirmed -> ColorDrawable(resources.getColor(R.color.c_blue, itemView.context.theme))
+                    is OrderStatus.Delivered -> ColorDrawable(resources.getColor(R.color.g_green, itemView.context.theme))
+                    is OrderStatus.Shipped -> ColorDrawable(resources.getColor(R.color.c_orange, itemView.context.theme))
+                    is OrderStatus.Canceled -> ColorDrawable(resources.getColor(R.color.g_red, itemView.context.theme))
+                    is OrderStatus.Returned -> ColorDrawable(resources.getColor(R.color.c_yellow, itemView.context.theme))
                 }
 
                 imageOrderState.setImageDrawable(colorDrawable)
 
+                tvOrderStatus.text = when (orderStatus) {
+                    is OrderStatus.Ordered -> "Pedido"
+                    is OrderStatus.Confirmed -> "Confirmado"
+                    is OrderStatus.Delivered -> "Entregado"
+                    is OrderStatus.Shipped -> "Enviado"
+                    is OrderStatus.Canceled -> "Cancelado"
+                    is OrderStatus.Returned -> "Devuelto"
+                }
             }
         }
     }
 
-
     private val diffUtil = object : DiffUtil.ItemCallback<Order>() {
         override fun areItemsTheSame(oldItem: Order, newItem: Order): Boolean {
-            return oldItem.products == newItem.products
+            return oldItem.orderId == newItem.orderId
         }
 
         override fun areContentsTheSame(oldItem: Order, newItem: Order): Boolean {

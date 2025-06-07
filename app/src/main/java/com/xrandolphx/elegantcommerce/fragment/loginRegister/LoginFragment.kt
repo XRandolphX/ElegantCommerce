@@ -13,18 +13,14 @@ import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
 import com.google.android.material.snackbar.Snackbar
-import com.xrandolphx.elegant_commerce.util.RegisterValidation
 import com.xrandolphx.elegant_commerce.util.Resource
 import com.xrandolphx.elegantcommerce.R
-import com.xrandolphx.elegantcommerce.activity.ShoppingActivity
+import com.xrandolphx.elegantcommerce.activity.MainActivity
 import com.xrandolphx.elegantcommerce.databinding.FragmentLoginBinding
 import com.xrandolphx.elegantcommerce.dialog.setupBottomSheetDialog
 import com.xrandolphx.elegantcommerce.viewmodel.LoginViewModel
 import dagger.hilt.android.AndroidEntryPoint
-import dagger.hilt.android.ViewModelLifecycle
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 
 @AndroidEntryPoint
 class LoginFragment : Fragment(R.layout.fragment_login) {
@@ -81,7 +77,7 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
 
                         is Resource.Success -> {
                             binding.buttonLoginLogin.revertAnimation()
-                            Intent(requireActivity(), ShoppingActivity::class.java).also { intent ->
+                            Intent(requireActivity(), MainActivity::class.java).also { intent ->
                                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)
                                 startActivity(intent)
                             }

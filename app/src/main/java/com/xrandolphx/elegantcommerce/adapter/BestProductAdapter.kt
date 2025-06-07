@@ -7,13 +7,10 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
-import androidx.recyclerview.widget.RecyclerView.Recycler
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.bumptech.glide.Glide
 import com.xrandolphx.elegantcommerce.data.Product
-import com.xrandolphx.elegantcommerce.databinding.ItemOfferBinding
 import com.xrandolphx.elegantcommerce.databinding.ProductRvItemBinding
-import com.xrandolphx.elegantcommerce.helper.getProductPrice
 
 class BestProductAdapter : RecyclerView.Adapter<BestProductAdapter.BestProductViewHolder>() {
 
