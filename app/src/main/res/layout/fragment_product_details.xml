@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/g_white"
+    android:background="@color/background_main"
     android:fillViewport="true">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -114,7 +114,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Color"
-                    android:textColor="@color/black" />
+                    android:textColor="@color/text" />
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/rvColors"
@@ -134,7 +134,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Talla"
-                    android:textColor="@color/black" />
+                    android:textColor="@color/text" />
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/rv_sizes"

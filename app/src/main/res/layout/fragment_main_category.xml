@@ -1,47 +1,32 @@
-<?xml version="1.0" encoding="utf-8"?><!-- Root layout: SwipeRefreshLayout para permitir la actualización de contenido -->
-<androidx.swiperefreshlayout.widget.SwipeRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/swipeRefreshLayoutMainCat"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/g_white">
+    android:background="@color/background_main">
 
-    <!-- NestedScrollView para permitir desplazamiento suave -->
     <androidx.core.widget.NestedScrollView
         android:id="@+id/nestedScrollMainCategory"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:fillViewport="true">
 
-        <!-- ConstriantLayout principal para organizar los elementos -->
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingBottom="80dp">
 
-            <!-- Contenedor principal de elementos -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
+                app:layout_constraintEnd_toEndOf="parent">
 
-                <!-- Título principal -->
-<!--                <TextView-->
-<!--                    android:id="@+id/title_main_category"-->
-<!--                    android:layout_width="match_parent"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:layout_marginStart="16dp"-->
-<!--                    android:layout_marginTop="16dp"-->
-<!--                    android:text="@string/app_name"-->
-<!--                    android:textColor="@color/black"-->
-<!--                    android:textSize="20sp"-->
-<!--                    android:textStyle="bold" />-->
-
-                <!-- Mensaje de bienvenida -->
+                <!-- Bienvenida -->
                 <TextView
                     android:id="@+id/textView4"
                     android:layout_width="match_parent"
@@ -50,10 +35,9 @@
                     android:layout_marginTop="16dp"
                     android:text="Bienvenido"
                     android:textStyle="italic"
-                    android:textColor="@color/black"
+                    android:textColor="@color/text"
                     android:textSize="20sp" />
 
-                <!-- Subtítulo -->
                 <TextView
                     android:id="@+id/textView5"
                     android:layout_width="match_parent"
@@ -61,10 +45,10 @@
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="8dp"
                     android:text="Obtén tu súper traje en este momento"
-                    android:textColor="@color/black"
+                    android:textColor="@color/text"
                     android:textSize="16sp" />
 
-                <!-- Sección de Artículos Populares -->
+                <!-- Artículos Populares -->
                 <TextView
                     android:id="@+id/tv_popular_title"
                     android:layout_width="match_parent"
@@ -72,11 +56,10 @@
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="24dp"
                     android:text="Artículos Populares"
-                    android:textColor="@color/black"
+                    android:textColor="@color/text"
                     android:textSize="16sp"
                     android:textStyle="bold" />
 
-                <!-- RecyclerView para Artículos Populares -->
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -94,20 +77,16 @@
 
                     <ProgressBar
                         android:id="@+id/progressBarPopular"
-                        style="?android:attr/progressBarStyle"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:indeterminateTint="@color/white"
-                        android:indeterminateTintMode="src_in"
-                        android:visibility="visible"
+                        app:layout_constraintTop_toTopOf="@+id/rvPopularProduct"
                         app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="@+id/rvPopularProduct" />
-
+                        app:layout_constraintEnd_toEndOf="parent" />
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
-                <!-- Sección de Ofertas -->
+                <!-- Ofertas -->
                 <TextView
                     android:id="@+id/textView6"
                     android:layout_width="match_parent"
@@ -115,11 +94,10 @@
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="24dp"
                     android:text="Ofertas"
-                    android:textColor="@color/black"
+                    android:textColor="@color/text"
                     android:textSize="16sp"
                     android:textStyle="bold" />
 
-                <!-- RecyclerView para Ofertas -->
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -137,19 +115,16 @@
 
                     <ProgressBar
                         android:id="@+id/progressBarOffer"
-                        style="?android:attr/progressBarStyle"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:indeterminateTint="@color/white"
-                        android:indeterminateTintMode="src_in"
+                        android:indeterminateTint="@color/text"
+                        app:layout_constraintTop_toTopOf="parent"
                         app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
-
+                        app:layout_constraintEnd_toEndOf="parent" />
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
-                <!-- Sección de Los Mejores Productos -->
+                <!-- Mejores Productos -->
                 <TextView
                     android:id="@+id/textView8"
                     android:layout_width="match_parent"
@@ -157,11 +132,10 @@
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="24dp"
                     android:text="Los Mejores Productos"
-                    android:textColor="@color/black"
+                    android:textColor="@color/text"
                     android:textSize="16sp"
                     android:textStyle="bold" />
 
-                <!-- RecyclerView para Los Mejores Productos -->
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -180,22 +154,16 @@
 
                     <ProgressBar
                         android:id="@+id/progressBarProducts"
-                        style="?android:attr/progressBarStyle"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:indeterminateTint="@color/white"
                         android:visibility="gone"
+                        app:layout_constraintTop_toTopOf="parent"
                         app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
-
+                        app:layout_constraintEnd_toEndOf="parent" />
                 </androidx.constraintlayout.widget.ConstraintLayout>
-
             </LinearLayout>
-
         </androidx.constraintlayout.widget.ConstraintLayout>
-
     </androidx.core.widget.NestedScrollView>
-
 </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>

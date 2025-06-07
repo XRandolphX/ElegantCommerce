@@ -23,7 +23,7 @@
                 android:layout_marginTop="15dp"
                 android:fontFamily="@font/poppins_thin"
                 android:text="Ofertas"
-                android:textColor="@color/black"
+                android:textColor="@color/text"
                 android:textSize="22sp"
                 app:layout_constraintStart_toStartOf="@+id/rvOfferProducts"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -59,7 +59,7 @@
                 android:layout_marginTop="30dp"
                 android:fontFamily="@font/poppins_thin"
                 android:text="Mejores Productos"
-                android:textColor="@color/black"
+                android:textColor="@color/text"
                 android:textSize="22sp"
                 app:layout_constraintStart_toStartOf="@+id/rvProducts"
                 app:layout_constraintTop_toBottomOf="@+id/rvOfferProducts" />

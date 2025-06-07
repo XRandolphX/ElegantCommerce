@@ -11,6 +11,8 @@ import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.bumptech.glide.Glide
 import com.xrandolphx.elegantcommerce.data.Product
 import com.xrandolphx.elegantcommerce.databinding.ProductRvItemBinding
+import java.text.NumberFormat
+import java.util.Locale
 
 class BestProductAdapter : RecyclerView.Adapter<BestProductAdapter.BestProductViewHolder>() {
 
@@ -19,15 +21,21 @@ class BestProductAdapter : RecyclerView.Adapter<BestProductAdapter.BestProductVi
         fun bind(product: Product) {
             binding.apply {
                 Glide.with(itemView).load(product.images[0]).into(imgProduct)
-                product.offerPercentage?.let {
-                    val remainingPricePercentage = 1f - it
-                    val priceAfterOffer = remainingPricePercentage * product.price
-                    tvNewPrice.text = "S/ ${String.format("%.2f", priceAfterOffer)}"
+                if (product.offerPercentage != null) {
+                    tvNewPrice.visibility = View.VISIBLE
                     tvOldPrice.paintFlags = Paint.STRIKE_THRU_TEXT_FLAG
-                }
-                if (product.offerPercentage == null)
+                    val discount = 1f - product.offerPercentage
+                    val newPrice = discount * product.price
+                    val formattedPrice = NumberFormat.getCurrencyInstance(Locale("es", "PE"))
+                        .format(newPrice)
+                    tvNewPrice.text = formattedPrice
+                } else {
                     tvNewPrice.visibility = View.INVISIBLE
-                tvOldPrice.text = "S/ ${product.price}"
+                    tvOldPrice.paintFlags = 0
+                }
+                val formattedPrice = NumberFormat.getCurrencyInstance(Locale("es", "PE"))
+                    .format(product.price)
+                tvOldPrice.text = formattedPrice
                 tvName.text = product.name
             }
         }
@@ -48,7 +56,9 @@ class BestProductAdapter : RecyclerView.Adapter<BestProductAdapter.BestProductVi
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BestProductViewHolder {
         return BestProductViewHolder(
             ProductRvItemBinding.inflate(
-                LayoutInflater.from(parent.context)
+                LayoutInflater.from(parent.context),
+                parent,
+                false
             )
         )
     }

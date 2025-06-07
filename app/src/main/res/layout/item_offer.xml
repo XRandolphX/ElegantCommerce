@@ -27,7 +27,7 @@
         android:maxLines="2"
         android:singleLine="true"
         android:text="Título"
-        android:textColor="@color/black"
+        android:textColor="@color/text"
         android:textStyle="bold" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -42,7 +42,7 @@
             android:layout_margin="8dp"
             android:text="S/ null"
             android:textAlignment="textEnd"
-            android:textColor="@color/black"
+            android:textColor="@color/text"
             android:textSize="16sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/tv_new_price"
@@ -55,7 +55,7 @@
             android:layout_margin="8dp"
             android:text="S/ null"
             android:textAlignment="textEnd"
-            android:textColor="@color/black"
+            android:textColor="@color/text"
             android:textSize="16sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

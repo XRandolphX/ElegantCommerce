@@ -31,7 +31,7 @@ class AddressAdapter : Adapter<AddressAdapter.AddressViewHolder>() {
                     buttonAddress.background =
                         ColorDrawable(
                             itemView.context.resources.getColor(
-                                R.color.g_white,
+                                R.color.background_main,
                                 itemView.context.theme
                             )
                         )

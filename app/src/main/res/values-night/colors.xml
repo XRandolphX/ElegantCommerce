@@ -1,3 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <color name="text">#FFFFFF</color> <!-- Blanco -->
+    <color name="search_background">#121212</color> <!-- Gris oscuro o fondo deseado -->
+    <color name="background_main">#121212</color> <!-- Fondo general si quieres oscuro -->
+    <color name="card">#0C0404</color>
+    <color name="search_hint">#AAAAAA</color>
 </resources>

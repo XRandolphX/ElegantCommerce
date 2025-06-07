@@ -11,6 +11,8 @@ import com.bumptech.glide.Glide
 import com.xrandolphx.elegantcommerce.data.CartProduct
 import com.xrandolphx.elegantcommerce.databinding.BillingProductsRvItemBinding
 import com.xrandolphx.elegantcommerce.helper.getProductPrice
+import java.text.NumberFormat
+import java.util.Locale
 
 class BillingProductsAdapter :
     RecyclerView.Adapter<BillingProductsAdapter.BillingProductsViewHolder>() {
@@ -26,16 +28,22 @@ class BillingProductsAdapter :
 
                 val priceAfterPercentage =
                     billingProduct.product.offerPercentage.getProductPrice(billingProduct.product.price)
-                tvProductCartPrice.text = "S/ ${String.format("%.2f", priceAfterPercentage)}"
+                val formattedPrice = NumberFormat.getCurrencyInstance(Locale("es", "PE"))
+                    .format(priceAfterPercentage)
+                tvProductCartPrice.text = formattedPrice
 
                 imageCartProductColor.setImageDrawable(
                     ColorDrawable(
                         billingProduct.selectedColor ?: Color.TRANSPARENT
                     )
                 )
-                tvCartProductSize.text = billingProduct.selectedSize ?: "".also {
+                if (billingProduct.selectedSize != null) {
+                    tvCartProductSize.text = billingProduct.selectedSize
+                } else {
+                    tvCartProductSize.text = ""
                     imageCartProductSize.setImageDrawable(ColorDrawable(Color.TRANSPARENT))
                 }
+
             }
         }
 
@@ -43,7 +51,7 @@ class BillingProductsAdapter :
 
     private val diffUtil = object : DiffUtil.ItemCallback<CartProduct>() {
         override fun areItemsTheSame(oldItem: CartProduct, newItem: CartProduct): Boolean {
-            return oldItem.product == newItem.product
+            return oldItem.product.id == newItem.product.id
         }
 
         override fun areContentsTheSame(oldItem: CartProduct, newItem: CartProduct): Boolean {
@@ -56,7 +64,9 @@ class BillingProductsAdapter :
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BillingProductsViewHolder {
         return BillingProductsViewHolder(
             BillingProductsRvItemBinding.inflate(
-                LayoutInflater.from(parent.context)
+                LayoutInflater.from(parent.context),
+                parent,
+                false
             )
         )
     }

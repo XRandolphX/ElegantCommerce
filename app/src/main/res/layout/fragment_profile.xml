@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F4F4F4"
+    android:background="@color/background_main"
     android:fillViewport="true"
     tools:context=".fragment.shopping.ProfileFragment">
 
@@ -51,7 +51,7 @@
                     android:id="@+id/imageUser"
                     android:layout_width="43dp"
                     android:layout_height="43dp"
-                    android:src="@color/black"
+                    android:src="@color/text"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
@@ -134,7 +134,7 @@
                         android:layout_marginStart="15dp"
                         android:layout_weight="1"
                         android:text="Historial de pedidos"
-                        android:textColor="@color/g_gray700"
+                        android:textColor="@color/text"
                         android:textStyle="bold" />
 
                     <ImageView
@@ -207,7 +207,7 @@
                         android:layout_marginStart="15dp"
                         android:layout_weight="1"
                         android:text="Facturación"
-                        android:textColor="@color/g_gray700"
+                        android:textColor="@color/text"
                         android:textStyle="bold" />
 
                     <ImageView
@@ -329,7 +329,7 @@
                         android:layout_marginStart="15dp"
                         android:layout_weight="1"
                         android:text="Cerrar sesión"
-                        android:textColor="@color/g_gray700"
+                        android:textColor="@color/text"
                         android:textStyle="bold" />
 
                     <ImageView

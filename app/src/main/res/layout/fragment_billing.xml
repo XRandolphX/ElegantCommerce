@@ -31,7 +31,7 @@
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:tint="@color/black" />
+                    app:tint="@color/text" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -39,7 +39,7 @@
                     android:layout_marginStart="25dp"
                     android:fontFamily="@font/poppins_light"
                     android:text="Facturación"
-                    android:textColor="@color/black"
+                    android:textColor="@color/text"
                     android:textSize="20sp"
                     app:layout_constraintBottom_toBottomOf="@id/imageCloseBilling"
                     app:layout_constraintStart_toStartOf="@id/imageCloseBilling"
@@ -55,7 +55,7 @@
             android:layout_marginTop="10dp"
             android:fontFamily="@font/poppins_thin"
             android:text="Métodos de Pago"
-            android:textColor="@color/black"
+            android:textColor="@color/text"
             android:textSize="15sp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="@id/leftGuideline"
@@ -67,7 +67,7 @@
             android:layout_height="wrap_content"
             android:fontFamily="@font/sf_pro_display"
             android:text="Elegant Commerce no integra pagos virtuales por el momento. Sin embargo puede pagar mediante Yape o Plin al número que se le otorgará al correo electrónico una vez haya realizado el pedido."
-            android:textColor="@color/black"
+            android:textColor="@color/text"
             android:textSize="15sp"
             app:layout_constraintEnd_toEndOf="@id/rightGuideline"
             app:layout_constraintStart_toStartOf="@id/leftGuideline"
@@ -91,10 +91,10 @@
             android:layout_marginTop="10dp"
             android:fontFamily="@font/poppins_thin"
             android:text="Dirección de envío"
-            android:textColor="@color/black"
+            android:textColor="@color/text"
             android:textSize="15sp"
             app:drawableLeftCompat="@drawable/ic_location"
-            app:drawableTint="@color/black"
+            app:drawableTint="@color/text"
             app:layout_constraintStart_toStartOf="@id/leftGuideline"
             app:layout_constraintTop_toBottomOf="@id/topLine" />
 
@@ -189,7 +189,7 @@
                 android:layout_marginBottom="15dp"
                 android:fontFamily="@font/sf_pro_display"
                 android:text="Total"
-                android:textColor="@color/black"
+                android:textColor="@color/text"
                 android:textSize="16sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -205,7 +205,7 @@
                 android:layout_marginBottom="15dp"
                 android:fontFamily="@font/sf_pro_display"
                 android:text="S/ 150"
-                android:textColor="@color/black"
+                android:textColor="@color/text"
                 android:textSize="16sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"

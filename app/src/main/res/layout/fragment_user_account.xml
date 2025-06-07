@@ -32,7 +32,7 @@
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:tint="@color/black" />
+                    app:tint="@color/text" />
 
 
                 <TextView
@@ -41,7 +41,7 @@
                     android:layout_marginStart="45dp"
                     android:fontFamily="@font/poppins_light"
                     android:text="Mi cuenta"
-                    android:textColor="@color/black"
+                    android:textColor="@color/text"
                     android:textSize="20sp"
                     app:layout_constraintBottom_toBottomOf="@id/imageCloseUserAccount"
                     app:layout_constraintStart_toStartOf="@id/imageCloseUserAccount"
@@ -65,7 +65,7 @@
             android:layout_width="85dp"
             android:layout_height="85dp"
             android:layout_marginTop="24dp"
-            android:src="@color/black"
+            android:src="@color/text"
             app:layout_constraintEnd_toEndOf="@id/rightGuideline"
             app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="@id/leftGuideline"
@@ -91,7 +91,7 @@
             android:background="@drawable/white_background"
             android:fontFamily="@font/poppins_light"
             android:gravity="center"
-            android:textColor="@color/black"
+            android:textColor="@color/text"
             android:hint="Nombres"
             android:singleLine="true"
             android:textStyle="bold"
@@ -108,7 +108,7 @@
             android:fontFamily="@font/poppins_light"
             android:gravity="center"
             android:hint="Apellidos"
-            android:textColor="@color/black"
+            android:textColor="@color/text"
             android:singleLine="true"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="@id/rightGuideline"
@@ -126,7 +126,7 @@
             android:gravity="center"
             android:hint="Email"
             android:singleLine="true"
-            android:textColor="@color/black"
+            android:textColor="@color/text"
             app:layout_constraintEnd_toEndOf="@id/rightGuideline"
             app:layout_constraintStart_toStartOf="@id/leftGuideline"
             app:layout_constraintTop_toBottomOf="@id/edLastName" />
@@ -136,7 +136,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:textColor="@color/black"
+            android:textColor="@color/text"
             android:text="Forgot/Change password"
             app:layout_constraintStart_toStartOf="@id/leftGuideline"
             app:layout_constraintTop_toBottomOf="@+id/edEmail" />

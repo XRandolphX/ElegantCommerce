@@ -46,7 +46,9 @@ class SizesAdapter : RecyclerView.Adapter<SizesAdapter.SizesViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SizesViewHolder {
         return SizesViewHolder(
             SizeRvItemBinding.inflate(
-                LayoutInflater.from(parent.context)
+                LayoutInflater.from(parent.context),
+                parent,
+                false
             )
         )
     }
@@ -56,11 +58,13 @@ class SizesAdapter : RecyclerView.Adapter<SizesAdapter.SizesViewHolder>() {
         holder.bind(size, position)
 
         holder.itemView.setOnClickListener {
-            if (selectedPosition >= 0)
+            val position = holder.adapterPosition
+            if (position != RecyclerView.NO_POSITION) {
+                if (selectedPosition >= 0) notifyItemChanged(selectedPosition)
+                selectedPosition = position
                 notifyItemChanged(selectedPosition)
-            selectedPosition = holder.adapterPosition
-            notifyItemChanged(selectedPosition)
-            onItemClick?.invoke(size)
+                onItemClick?.invoke(size)
+            }
         }
     }
 

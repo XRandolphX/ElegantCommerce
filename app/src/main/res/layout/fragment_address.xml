@@ -25,7 +25,7 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:tint="@color/black" />
+                app:tint="@color/text" />
 
 
             <TextView
@@ -34,7 +34,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
                 android:text="Información de Envío"
-                android:textColor="@color/black"
+                android:textColor="@color/text"
                 android:textSize="18sp"
                 app:layout_constraintBottom_toBottomOf="@+id/imageAddressClose"
                 app:layout_constraintStart_toEndOf="@id/imageAddressClose"
@@ -67,7 +67,7 @@
         android:paddingStart="20dp"
         android:paddingEnd="20dp"
         android:singleLine="true"
-        android:textColor="@color/black"
+        android:textColor="@color/text"
         android:textColorHint="@color/c_darkGrey"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="@id/guideline2"
@@ -86,7 +86,7 @@
         android:paddingStart="20dp"
         android:paddingEnd="20dp"
         android:singleLine="true"
-        android:textColor="@color/black"
+        android:textColor="@color/text"
         android:textColorHint="@color/c_darkGrey"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="@id/guideline2"
@@ -105,7 +105,7 @@
         android:paddingStart="20dp"
         android:paddingEnd="20dp"
         android:singleLine="true"
-        android:textColor="@color/black"
+        android:textColor="@color/text"
         android:textColorHint="@color/c_darkGrey"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="@id/guideline2"
@@ -126,7 +126,7 @@
         android:paddingStart="20dp"
         android:paddingEnd="20dp"
         android:singleLine="true"
-        android:textColor="@color/black"
+        android:textColor="@color/text"
         android:textColorHint="@color/c_darkGrey"
         android:textStyle="bold"
         app:layout_constraintEnd_toStartOf="@+id/guideline2"

@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/g_white">
+    android:background="@color/background_main">
 
     <LinearLayout
         android:id="@+id/homeHeader"
@@ -21,34 +21,16 @@
             android:id="@+id/searchBar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1">
-
-            <!--            <TextView-->
-            <!--                android:layout_width="match_parent"-->
-            <!--                android:layout_height="wrap_content"-->
-            <!--                android:background="@drawable/searchtext_bg"-->
-            <!--                android:drawableStart="@drawable/ic_search"-->
-            <!--                android:drawablePadding="5dp"-->
-            <!--                android:fontFamily="@font/poppins_thin"-->
-            <!--                android:hint="Buscar ..."-->
-            <!--                android:paddingStart="20dp"-->
-            <!--                android:paddingTop="10dp"-->
-            <!--                android:paddingBottom="10dp"-->
-            <!--                android:singleLine="true"-->
-            <!--                android:textColor="#919394"-->
-            <!--                android:textColorHint="@color/black"-->
-            <!--                android:textSize="15sp"-->
-            <!--                app:layout_constraintBottom_toBottomOf="parent"-->
-            <!--                app:layout_constraintStart_toStartOf="parent"-->
-            <!--                app:layout_constraintTop_toTopOf="parent" />-->
+            android:layout_weight="1"
+            android:background="@color/search_background">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/app_name"
-                android:textSize="20dp"
+                android:textSize="20sp"
                 android:textStyle="bold"
-                android:textColor="@color/black"
+                android:textColor="@color/text"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -59,23 +41,12 @@
             android:layout_width="10dp"
             android:layout_height="match_parent" />
 
-        <!--        <ImageView-->
-        <!--            android:layout_width="40dp"-->
-        <!--            android:layout_height="match_parent"-->
-        <!--            android:backgroundTint="@color/g_search_and_icons"-->
-        <!--            android:padding="10dp"-->
-        <!--            android:src="@drawable/ic_scan" />-->
+
 
         <View
             android:layout_width="10dp"
             android:layout_height="match_parent" />
 
-        <!--        <ImageView-->
-        <!--            android:layout_width="40dp"-->
-        <!--            android:layout_height="match_parent"-->
-        <!--            android:backgroundTint="@color/g_search_and_icons"-->
-        <!--            android:padding="10dp"-->
-        <!--            android:src="@drawable/ic_microphone" />-->
 
     </LinearLayout>
 
@@ -85,30 +56,30 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
-        android:background="@color/g_white"
+        android:background="@color/background_main"
         android:contentDescription="descripcion"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/homeHeader"
         app:tabGravity="center"
         app:tabMode="scrollable"
-        app:tabIndicatorColor="@color/black"
+        app:tabIndicatorColor="@color/text"
         app:tabIndicatorHeight="2dp"
         app:tabRippleColor="@color/c_black_grafito"
-        app:tabSelectedTextColor="@color/black"
+        app:tabSelectedTextColor="@color/text"
         app:tabTextColor="@color/g_gray500"
         app:tabTextAppearance="@style/h2"
         app:tabPaddingStart="16dp"
         app:tabPaddingEnd="16dp">
 
-        <!-- Ejemplo de Tab -->
+
         <com.google.android.material.tabs.TabItem
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="ejemplo"
             android:contentDescription="hola uwu"/>
 
-        <!-- Añade más TabItems según sea necesario -->
+
 
     </com.google.android.material.tabs.TabLayout>
 

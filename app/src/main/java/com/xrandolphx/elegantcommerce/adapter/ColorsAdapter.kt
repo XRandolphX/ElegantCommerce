@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.xrandolphx.elegantcommerce.databinding.ColorRvItemBinding
+import com.xrandolphx.elegantcommerce.util.setVisible
 
 class ColorsAdapter : RecyclerView.Adapter<ColorsAdapter.ColorsViewHolder>() {
 
@@ -21,13 +22,13 @@ class ColorsAdapter : RecyclerView.Adapter<ColorsAdapter.ColorsViewHolder>() {
             binding.imageColor.setImageDrawable(imageDrawable)
             if (position == selectedPosition) { // Color seleccionado
                 binding.apply {
-                    imageShadow.visibility = View.VISIBLE
-                    imagePicked.visibility = View.VISIBLE
+                    imageShadow.setVisible(position == selectedPosition)
+                    imagePicked.setVisible(position == selectedPosition)
                 }
             } else { // Color no seleccionado
                 binding.apply {
-                    imageShadow.visibility = View.INVISIBLE
-                    imagePicked.visibility = View.INVISIBLE
+                    imageShadow.setVisible(position == selectedPosition)
+                    imagePicked.setVisible(position == selectedPosition)
                 }
             }
         }
@@ -49,7 +50,9 @@ class ColorsAdapter : RecyclerView.Adapter<ColorsAdapter.ColorsViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ColorsViewHolder {
         return ColorsViewHolder(
             ColorRvItemBinding.inflate(
-                LayoutInflater.from(parent.context)
+                LayoutInflater.from(parent.context),
+                parent,
+                false
             )
         )
     }
@@ -59,11 +62,13 @@ class ColorsAdapter : RecyclerView.Adapter<ColorsAdapter.ColorsViewHolder>() {
         holder.bind(color, position)
 
         holder.itemView.setOnClickListener {
-            if (selectedPosition >= 0)
+            val position = holder.adapterPosition
+            if (position != RecyclerView.NO_POSITION) {
+                if (selectedPosition >= 0) notifyItemChanged(selectedPosition)
+                selectedPosition = position
                 notifyItemChanged(selectedPosition)
-            selectedPosition = holder.adapterPosition
-            notifyItemChanged(selectedPosition)
-            onItemClick?.invoke(color)
+                onItemClick?.invoke(color)
+            }
         }
     }
 

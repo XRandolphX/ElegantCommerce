@@ -31,7 +31,7 @@
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:tint="@color/black" />
+                    app:tint="@color/text" />
 
                 <TextView
                     android:id="@+id/tvOrderId"
@@ -40,7 +40,7 @@
                     android:layout_marginStart="25dp"
                     android:fontFamily="@font/poppins_light"
                     android:text="#1234567"
-                    android:textColor="@color/black"
+                    android:textColor="@color/text"
                     android:textSize="20sp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toEndOf="@id/imageCloseOrder"
@@ -90,10 +90,10 @@
             android:layout_marginTop="20dp"
             android:fontFamily="@font/poppins_thin"
             android:text="Dirigirse a"
-            android:textColor="@color/black"
+            android:textColor="@color/text"
             android:textSize="15sp"
             app:drawableLeftCompat="@drawable/ic_location"
-            app:drawableTint="@color/black"
+            app:drawableTint="@color/text"
             app:layout_constraintStart_toStartOf="@id/guideline1"
             app:layout_constraintTop_toBottomOf="@id/linearStepView" />
 
@@ -112,7 +112,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Nombre Completo"
-                android:textColor="@color/black"
+                android:textColor="@color/text"
                 android:textSize="13sp" />
 
             <TextView
@@ -120,7 +120,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Dirección"
-                android:textColor="@color/black"
+                android:textColor="@color/text"
                 android:textSize="13sp" />
 
             <TextView
@@ -128,7 +128,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Celular"
-                android:textColor="@color/black"
+                android:textColor="@color/text"
                 android:textSize="13sp" />
 
         </LinearLayout>
@@ -152,10 +152,10 @@
             android:drawablePadding="5dp"
             android:fontFamily="@font/poppins_thin"
             android:text="Productos"
-            android:textColor="@color/black"
+            android:textColor="@color/text"
             android:textSize="15sp"
             app:drawableLeftCompat="@drawable/ic_cart"
-            app:drawableTint="@color/black"
+            app:drawableTint="@color/text"
             app:layout_constraintStart_toStartOf="@id/guideline1"
             app:layout_constraintTop_toBottomOf="@id/line1" />
 
@@ -191,7 +191,7 @@
                 android:layout_weight="1"
                 android:fontFamily="@font/sf_pro_display"
                 android:text="Total"
-                android:textColor="@color/black"
+                android:textColor="@color/text"
                 android:textSize="16sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -206,7 +206,7 @@
                 android:layout_marginEnd="10dp"
                 android:layout_marginBottom="16sp"
                 android:fontFamily="@font/sf_pro_display"
-                android:textColor="@color/black"
+                android:textColor="@color/text"
                 android:textSize="16sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"

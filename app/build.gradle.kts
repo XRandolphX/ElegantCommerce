@@ -90,6 +90,7 @@ android {
 dependencies {
     // DEPENDENCIAS BASE
     implementation(libs.androidx.core.ktx)
+    implementation(libs.appcompat)
     androidTestImplementation(libs.androidx.espresso.core)
 
     implementation(libs.androidx.appcompat)

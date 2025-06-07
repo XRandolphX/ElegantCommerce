@@ -5,7 +5,7 @@
     android:id="@+id/nestedScrollAllProducts"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/g_white"
+    android:background="@color/background_main"
     android:fillViewport="true">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -31,18 +31,19 @@
 
                 <SearchView
                     android:id="@+id/svSearchBar"
-                    android:layout_width="match_parent"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="12dp"
                     android:layout_marginTop="16dp"
                     android:layout_marginEnd="12dp"
-                    android:focusable="false"
+                    android:background="@color/search_background"
                     android:iconifiedByDefault="false"
                     android:queryHint="Buscar..."
                     android:searchHintIcon="@null"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
+
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 

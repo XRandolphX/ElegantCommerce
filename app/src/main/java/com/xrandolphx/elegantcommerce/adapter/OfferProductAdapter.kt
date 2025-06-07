@@ -44,7 +44,9 @@ class OfferProductAdapter : RecyclerView.Adapter<OfferProductAdapter.OffersViewH
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): OffersViewHolder {
         return OffersViewHolder(
             ItemOfferBinding.inflate(
-                LayoutInflater.from(parent.context)
+                LayoutInflater.from(parent.context),
+                parent,
+                false
             )
         )
     }

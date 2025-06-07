@@ -9,14 +9,15 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.xrandolphx.elegantcommerce.data.CartProduct
-import com.xrandolphx.elegantcommerce.data.Product
 import com.xrandolphx.elegantcommerce.databinding.ItemCartBinding
 import com.xrandolphx.elegantcommerce.helper.getProductPrice
+import java.text.NumberFormat
+import java.util.Locale
 
 class CartProductAdapter :
     RecyclerView.Adapter<CartProductAdapter.CartProductsViewHolder>() {
 
-    inner class CartProductsViewHolder( val binding: ItemCartBinding) :
+    inner class CartProductsViewHolder(val binding: ItemCartBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
         fun bind(cartProduct: CartProduct) {
@@ -27,7 +28,9 @@ class CartProductAdapter :
 
                 val priceAfterPercentage =
                     cartProduct.product.offerPercentage.getProductPrice(cartProduct.product.price)
-                tvPriceEachItem.text = "S/ ${String.format("%.2f", priceAfterPercentage)}"
+                val formattedPrice = NumberFormat.getCurrencyInstance(Locale("es", "PE"))
+                    .format(priceAfterPercentage)
+                tvPriceEachItem.text = formattedPrice
 
                 imageCartProductColor.setImageDrawable(
                     ColorDrawable(
@@ -35,9 +38,13 @@ class CartProductAdapter :
                     )
                 )
 
-                tvCartProductSize.text = cartProduct.selectedSize ?: "".also {
+                if (cartProduct.selectedSize != null) {
+                    tvCartProductSize.text = cartProduct.selectedSize
+                } else {
+                    tvCartProductSize.text = ""
                     imageCartProductSize.setImageDrawable(ColorDrawable(Color.TRANSPARENT))
                 }
+
             }
         }
     }
